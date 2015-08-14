@@ -3,6 +3,7 @@ var camera, renderer, scene, controls;
 var kcSphere, kcSphere2, shaderPlane;
 var w = window.innerWidth;
 var h = window.innerHeight;
+var events = new Events();
 
 // load shaders and fire up THREE scene once we've completed the async load
 var shaders = new ShaderLoader('./shaders', './shaderChunks');
@@ -33,10 +34,16 @@ function init(){
   renderer = new THREE.WebGLRenderer();
   renderer.setSize( window.innerWidth, window.innerHeight );
   document.body.appendChild( renderer.domElement );
+
+  // init audio player
+  AudioHandler.init();
+  // AudioHandler.onUseMic();
+  AudioHandler.onUseSample('./audio/Scaffolding - Rebuild (Wayne Winters remix).mp3');
 }
 
 // render loop
 function animate(){
+  events.emit('update');
   // update our shapes
   kcSphere.update();
   kcSphere2.update();
