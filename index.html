@@ -1,10 +1,20 @@
 <html>
   <head>
     <style>
-      body{ margin: 0px; background: #000000; }
+      body{
+        margin: 0px;
+        background: #000000;
+      }
+      #audio-debug {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 3;
+      }
     </style>
   </head>
   <body>
+    <canvas id="audio-debug" width=250 height=200></canvas>
     <script src="./javascripts/lib/jquery.min.js"></script>
     <script src="./javascripts/lib/shader-loader.js"></script>
     <script src="./javascripts/lib/three.min.js"></script>

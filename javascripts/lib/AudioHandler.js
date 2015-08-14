@@ -35,6 +35,7 @@ var AudioHandler = function() {
 	var aveBarWidth = 30;
 	var bpmHeight = debugH - chartH;
 	var debugSpacing = 2;
+
 	var gradient;
 
 	var freqByteData; //bars - bar data is from 0 - 256 in 512 bins. no sound is 0;
@@ -61,7 +62,7 @@ var AudioHandler = function() {
 
 	var usingMic = false;
 	var usingAudioFile = false;
-	var showingDebug = false;
+	var showingDebug = true;
 	var fakeBpmMode = false;
 	var volSens = 1;
 	var beatHoldTime = 40;
@@ -106,7 +107,7 @@ var AudioHandler = function() {
 		}
 
 		//INIT DEBUG DRAW
-		var canvas = document.getElementById("audioDebug");
+		var canvas = document.getElementById("audio-debug");
 		if(canvas) {
 			debugCtx = canvas.getContext('2d');
 			debugCtx.width = debugW;
@@ -114,7 +115,7 @@ var AudioHandler = function() {
 			debugCtx.fillStyle = "rgb(40, 40, 40)";
 			debugCtx.lineWidth=2;
 			debugCtx.strokeStyle = "rgb(255, 255, 255)";
-			$('#audioDebugCtx').hide();
+			$('#audio-debugCtx').hide();
 
 			gradient = debugCtx.createLinearGradient(0,0,0,256);
 			gradient.addColorStop(1,'#330000');
@@ -200,15 +201,6 @@ var AudioHandler = function() {
 		}else{
 			stopSound();
 		}
-	}
-
-	function onShowDebug(){
-		if (showingDebug){
-			$('#audioDebug').show();
-		}else{
-			$('#audioDebug').hide();
-		}
-
 	}
 
 	//load dropped MP3
@@ -524,7 +516,6 @@ var AudioHandler = function() {
 
 	return {
 		onMP3Drop: onMP3Drop,
-		onShowDebug:onShowDebug,
 		onUseMic:onUseMic,
 		onUseSample:onUseSample,
 		update:update,

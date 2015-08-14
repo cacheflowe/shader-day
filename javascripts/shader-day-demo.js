@@ -1,3 +1,4 @@
+// lots based on & borrowed from: view-source:http://www.airtightinteractive.com/demos/js/uberviz/wordproblems/
 // global THREE.js/scene elements
 var camera, renderer, scene, controls;
 var kcSphere, kcSphere2, shaderPlane;
@@ -25,10 +26,7 @@ function init(){
 
   // init custom shapes
   kcSphere = new KCSphere(scene, shaders);
-  kcSphere.mesh.position.x = -500;
-  kcSphere2 = new KCSphere(scene, shaders);
-  kcSphere2.mesh.position.x = 500;
-  shaderPlane = new ShaderPlane(scene, shaders, 100, h);
+  shaderPlane = new ShaderPlane(scene, shaders, w, h);
 
   // fire up the webGL <canvas> renderer and attach it to the DOM
   renderer = new THREE.WebGLRenderer();
@@ -39,6 +37,7 @@ function init(){
   AudioHandler.init();
   // AudioHandler.onUseMic();
   AudioHandler.onUseSample('./audio/Scaffolding - Rebuild (Wayne Winters remix).mp3');
+  events.emit('onBeat');
 }
 
 // render loop
@@ -46,7 +45,6 @@ function animate(){
   events.emit('update');
   // update our shapes
   kcSphere.update();
-  kcSphere2.update();
   shaderPlane.update();
   // update camera
   controls.update();
