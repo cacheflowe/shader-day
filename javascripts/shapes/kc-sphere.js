@@ -41,6 +41,7 @@ var KCSphere = function(scene, shaders) {
     kc_uniforms.waveModeZenith.value = waveModeZenith;
     kc_uniforms.colorPhaseAdjuster.value = colorPhaseAdjuster;
   }
+  events.on("update", update);
 
   return {
     update: update,

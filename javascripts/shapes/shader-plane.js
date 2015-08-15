@@ -16,7 +16,7 @@ var ShaderPlane = function(scene, shaders, w, h) {
     fragmentShader: shaders.fragmentShaders.dots,
     side: THREE.DoubleSide
   });
-  
+
   var planeGeom = new THREE.PlaneGeometry(w, h);
   var mesh = new THREE.Mesh(planeGeom, planeMat);
   scene.add( mesh );
@@ -25,6 +25,7 @@ var ShaderPlane = function(scene, shaders, w, h) {
     time += 0.01;
     planeTextureUniforms.time.value = time;
   }
+  events.on("update", update);
 
   return {
     update: update,

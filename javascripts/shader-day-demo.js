@@ -34,18 +34,15 @@ function init(){
   document.body.appendChild( renderer.domElement );
 
   // init audio player
-  AudioHandler.init();
-  // AudioHandler.onUseMic();
-  AudioHandler.onUseSample('./audio/Scaffolding - Rebuild (Wayne Winters remix).mp3');
+  AudioHandler.init(32);
+  AudioHandler.onUseMic();
+  // AudioHandler.onUseSample('./audio/Scaffolding - Rebuild (Wayne Winters remix).mp3');
   events.emit('onBeat');
 }
 
 // render loop
 function animate(){
   events.emit('update');
-  // update our shapes
-  kcSphere.update();
-  shaderPlane.update();
   // update camera
   controls.update();
   // render and keep animating
