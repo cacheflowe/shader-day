@@ -1,7 +1,7 @@
 // lots based on & borrowed from: view-source:http://www.airtightinteractive.com/demos/js/uberviz/wordproblems/
 // global THREE.js/scene elements
 var camera, renderer, scene, controls;
-var kcSphere, kcSphere2, shaderPlane;
+var kcSphere, jgAudioSphere, jgDeformSphere;
 var w = window.innerWidth;
 var h = window.innerHeight;
 var events = new Events();
@@ -24,9 +24,23 @@ function init(){
   controls = new THREE.TrackballControls( camera );
   scene = new THREE.Scene();
 
+  // add lights for jg spheres...
+  var directionalLight = new THREE.DirectionalLight( 0xffffff );
+  directionalLight.position.set( 0, 0, 1 ).normalize();
+  scene.add( directionalLight );
+
+
   // init custom shapes
   kcSphere = new KCSphere(scene, shaders);
+  kcSphere.mesh.scale.set(0.8,0.8,0.8);
+  jgAudioSphere = new JGAudioSphere(scene);
+  jgAudioSphere.mesh.position.x = -500;
+  jgAudioSphere.mesh.scale.set(0.5,0.5,0.5)
+  jgDeformSphere = new JGDeformSphere(scene);
+  jgDeformSphere.mesh.position.x = 500;
+  jgDeformSphere.mesh.scale.set(0.5,0.5,0.5)
   shaderPlane = new ShaderPlane(scene, shaders, w, h);
+  shaderPlane.mesh.position.z = -500;
 
   // fire up the webGL <canvas> renderer and attach it to the DOM
   renderer = new THREE.WebGLRenderer();
