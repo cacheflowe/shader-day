@@ -1,4 +1,4 @@
-//UberViz AudioHandler
+//UberViz AudioHandler by Felix Turner / airtightinteractive.com
 //Handles Audio loading and Playback
 //Handles Audio Analysis + publishes audio data
 //Handles Tap BPM
