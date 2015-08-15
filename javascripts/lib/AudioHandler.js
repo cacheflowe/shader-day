@@ -71,8 +71,9 @@ var AudioHandler = function() {
 	var bpmRate = 0;
 
 
-	function init() {
-
+	function init(levelsNum) {
+		if(levelsNum) levelsCount = levelsNum;
+		
 		//EVENT HANDLERS
 		events.on("update", update);
 
