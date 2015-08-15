@@ -30,8 +30,6 @@ var KCSphere = function(scene, shaders) {
     waveModeZenith = Math.floor(Math.random()*4.0); //I happen to know the shader wants range 0-3, how to determine?
     colorPhaseAdjuster = Math.random()*9999.0; //Push the color phase to some random value;
   }
-
-  window.addEventListener('click', newRandomParams);
   events.on("onBeat", newRandomParams);
 
   function update() {

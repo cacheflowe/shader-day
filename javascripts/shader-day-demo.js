@@ -35,10 +35,10 @@ function init(){
   kcSphere.mesh.scale.set(0.8,0.8,0.8);
   jgAudioSphere = new JGAudioSphere(scene);
   jgAudioSphere.mesh.position.x = -500;
-  jgAudioSphere.mesh.scale.set(0.5,0.5,0.5)
+  jgAudioSphere.mesh.scale.set(0.5,0.5,0.5);
   jgDeformSphere = new JGDeformSphere(scene);
   jgDeformSphere.mesh.position.x = 500;
-  jgDeformSphere.mesh.scale.set(0.5,0.5,0.5)
+  jgDeformSphere.mesh.scale.set(0.5,0.5,0.5);
   shaderPlane = new ShaderPlane(scene, shaders, w, h);
   shaderPlane.mesh.position.z = -500;
 
@@ -52,6 +52,7 @@ function init(){
   AudioHandler.onUseMic();
   // AudioHandler.onUseSample('./audio/Scaffolding - Rebuild (Wayne Winters remix).mp3');
   events.emit('onBeat');
+  window.addEventListener('click', function(){ events.emit('onBeat'); });
 }
 
 // render loop
